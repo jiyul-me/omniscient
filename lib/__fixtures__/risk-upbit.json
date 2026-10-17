@@ -1,0 +1,127 @@
+{
+ "address": "0xa09871aeadf4994ca12f5c0b6056bbd1d343c029",
+ "capturedAt": "2026-10-17",
+ "note": "GET /api/risk?debug=1 결과의 input (금액은 ETH 환산, 소수 6자리 반올림)",
+ "expected": {
+  "score": 90,
+  "in": 0,
+  "out": 90
+ },
+ "input": {
+  "center": {
+   "category": "hacker",
+   "source": "tayvano/lazarus-bluenoroff-research upbit.md",
+   "community": true
+  },
+  "flows": [
+   {
+    "side": "in",
+    "address": "0x5e032243d507c743b061ef021e2ec7fcc6d3ab89",
+    "valueEth": 342000,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xc7d64e6509333a3b68f6fc09d7d19404bfdd229a",
+    "valueEth": 100,
+    "category": "hacker"
+   },
+   {
+    "side": "in",
+    "address": "0x3408edca2d47ddaa783a3563d991b8ddebcd973b",
+    "valueEth": 100,
+    "category": "hacker"
+   },
+   {
+    "side": "in",
+    "address": "0x9a207194cbed9f229694fdf5a28caab59157920d",
+    "valueEth": 100,
+    "category": "hacker"
+   },
+   {
+    "side": "in",
+    "address": "0x00cdc153aa8894d08207719fe921fff964f28ba3",
+    "valueEth": 0.05,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x62641f2d2b4ffa6caaf0748b6252353c37d4a3c3",
+    "valueEth": 0.049108,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x68dd26629fac2f1e68059a4b103f7b8f2789c581",
+    "valueEth": 0.016257,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xf1c8bfb2d69d95a7b60275e76ac9e14d855958e4",
+    "valueEth": 0.0143,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xe9462c8bc1dfd514fc1994a1cd6cfe7abb1ffada",
+    "valueEth": 0.012,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xcfcf65d4488d6e526ffd133756210367972ecedd",
+    "valueEth": 0.011,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xc1b975439d7c26efba6e4746ad40a7a65eb9f074",
+    "valueEth": 0.01,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x814b171690f6182387aab47df028a5a1da90e227",
+    "valueEth": 0.01,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xf1d102e8f32b24bab26fca10067f528e58a71437",
+    "valueEth": 0.01,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x084f898fba67dafe1a4a2f2369d7331aa281d2a8",
+    "valueEth": 0.01,
+    "category": null
+   },
+   {
+    "side": "out",
+    "address": "0xc7d64e6509333a3b68f6fc09d7d19404bfdd229a",
+    "valueEth": 120280.16,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x3408edca2d47ddaa783a3563d991b8ddebcd973b",
+    "valueEth": 111010,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x9a207194cbed9f229694fdf5a28caab59157920d",
+    "valueEth": 111010,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x31932e7fd5e7265180bb085ccf9867fddc106be3",
+    "valueEth": 0.001271,
+    "category": null
+   }
+  ]
+ }
+}

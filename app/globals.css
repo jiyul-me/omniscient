@@ -1,0 +1,292 @@
+@import "tailwindcss";
+/* 한글·영문 글꼴 Pretendard (OFL). 화면에 나온 글자 조각만 받는 버전, 우리 도메인에서 제공 */
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+
+/* 밝은 '분석 리포트' 테마 (2026-10-17)
+   - 종이색 바탕(canvas) 위에 흰 패널(surface) 두 단계. 그림자·반투명·blur 없음 (1px 선은 OK)
+   - 글자색 세 단계: fg(제목·숫자) / fg-2(설명 문단) / muted(단위·시간·출처)
+   - 청록(accent): 로고, 주 버튼, 키보드 포커스, 데이터 링크 hover, 그래프 선택 테두리에만
+   - 빨강·검정·보라·파랑·초록·회색은 주소 분류(lib/categories.ts) 전용 → 화면 상태 표시에 쓰지 않기
+   - 대비는 모두 WCAG AA (글자 4.5:1, 입력칸·막대 같은 그래픽 3:1) */
+@theme {
+  /* 면: 종이 → 패널 → 표 머리줄·마우스 올림 */
+  --color-canvas: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-surface-2: #f0efea;
+
+  /* 선: 장식 구분선 / 패널·카드 테두리 / 입력칸·버튼·막대 테두리(3:1 이상) */
+  --color-line: #e4e2db;
+  --color-line-strong: #d2cfc6;
+  --color-line-control: #7f848d;
+
+  /* 글자: 제목·숫자 / 설명 문단 / 단위·시간·출처 */
+  --color-fg: #15171c;
+  --color-fg-2: #3e434c;
+  --color-muted: #5d6370;
+
+  --color-accent: #0a6878;
+  --color-accent-strong: #07505c;
+
+  /* 경고 (호박색 계열): 글자·아이콘 / 막대 채움·경고 상자 왼쪽 줄 / 경고 바탕 / 경고 상자 테두리 */
+  --color-warn: #a04a06;
+  --color-warn-fill: #c46a0a;
+  --color-warn-bg: #fff6e0;
+  --color-warn-line: #eed3a0;
+
+  /* 글자 크기 (한글 기준, 가장 작은 글씨도 13px) */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.25rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.375rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.75rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.375rem;
+  --text-2xl--line-height: 1.875rem;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2.125rem;
+  --text-4xl--line-height: 2.625rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 3.625rem;
+  /* 점수 숫자 */
+  --text-score: 5rem;
+  --text-score--line-height: 4.75rem;
+
+  /* 굵기: 400 / 500 / 600 / 650(단원·패널 제목) / 700(큰 제목·점수) */
+  --font-weight-strong: 650;
+}
+
+/* 고정폭 글꼴(주소·해시)은 Geist Mono, 그 안의 한글은 Pretendard로 (굴림체 방지) */
+@theme inline {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Pretendard Variable", monospace;
+}
+
+/* 키보드 포커스 표시: 마우스 클릭 땐 안 보이고, Tab으로 왔을 때만 청록 테두리
+   (평소 색을 투명으로 둬야 transition-colors 때 색이 번쩍이지 않음) */
+@utility focus-ring {
+  outline-color: transparent;
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  &:focus-visible {
+    outline-color: var(--color-accent);
+  }
+}
+
+/* 같은 효과를 안쪽에 그리는 버전 (overflow-hidden 상자 안에 꽉 찬 링크·버튼용) */
+@utility focus-ring-inset {
+  outline-color: transparent;
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+  }
+  &:focus-visible {
+    outline-color: var(--color-accent);
+  }
+}
+
+/* 그래프 판의 옅은 점 격자 */
+@utility bg-dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, #dad7cf 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* 숫자 폭을 같게 (세로로 자릿수가 맞게) */
+@utility num {
+  font-variant-numeric: tabular-nums;
+}
+
+@layer base {
+  html {
+    /* 스크롤바가 생겼다 없어질 때 가운데 정렬 화면이 옆으로 밀리지 않게 (Windows) */
+    scrollbar-gutter: stable;
+  }
+  body {
+    background: var(--color-canvas);
+    color: var(--color-fg);
+    /* 한국어 단어 중간에서 줄이 끊기지 않게 + 긴 주소는 넘치지 않게 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  /* 마지막 줄에 한 단어만 남지 않게, 제목은 줄 길이를 고르게 */
+  p,
+  li,
+  dd,
+  figcaption {
+    text-wrap: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  ::selection {
+    background-color: #cde6ea;
+    color: var(--color-fg);
+  }
+}
+
+/* 첫 화면엔 큰 검색칸이 있어서 머리말 검색칸을 숨김 (components/HeaderSearch.tsx)
+   다른 페이지로 가도 Next가 첫 화면을 display:none으로 숨겨 둔 채 남겨서, 숨겨진 표시는 빼고 봄 */
+body:has([data-home]:not([style*="none"])) [data-header-search] {
+  display: none;
+}
+
+/* 그래프 칸은 캔버스 색이 흰 판 기준이라 고대비 모드에서도 바탕을 그대로 둠
+   (검은 고대비 테마에서 바탕만 까매지면 해커 점·글자가 안 보임) */
+.graph-panel {
+  forced-color-adjust: none;
+}
+
+/* 시간 슬라이더 막대 (components/graph/TimeSlider.tsx): 가는 회색 길 + 지나온 부분은 진한 회색, 손잡이는 진한 원
+   청록은 키보드 포커스에만. 고대비 모드는 브라우저 기본 모양으로 */
+.graph-range {
+  appearance: none;
+  background: transparent;
+}
+.graph-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-fg-2) var(--fill), var(--color-line-strong) var(--fill));
+}
+.graph-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: var(--color-fg);
+  box-shadow: 0 0 0 1px var(--color-fg);
+}
+.graph-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-line-strong);
+}
+.graph-range::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-fg-2);
+}
+.graph-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: var(--color-fg);
+  box-shadow: 0 0 0 1px var(--color-fg);
+}
+@media (forced-colors: active) {
+  .graph-range {
+    appearance: auto;
+  }
+}
+
+/* 3D 인쇄용 사진 (components/FlowGraph.tsx beforeprint). 화면에선 안 보임 */
+.graph-panel .print-snapshot {
+  display: none;
+}
+
+/* 그래프 툴팁 (react-force-graph가 .float-tooltip-kap으로 만듦). 라이브러리 기본 스타일을 이기려고 .graph-panel 안으로 한정 */
+.graph-panel .float-tooltip-kap {
+  max-width: 19rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-line-control);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  color: var(--color-fg-2);
+  font: 400 0.8125rem / 1.25rem var(--font-sans);
+}
+
+/* 휴대폰: 그래프 위에서 한 손가락으로 쓸면 페이지가 내려가게 (그래프 라이브러리가 캔버스에 'none'을 직접 넣어서 이김).
+   두 손가락 확대·이동은 그래프가 받음 (components/FlowGraph.tsx panFilter) */
+.graph-panel .force-graph-container canvas {
+  touch-action: pan-y !important;
+}
+
+/* 3D 그래프 점 이름표 (components/graph/Graph3D.tsx). 2D 이름표와 같은 모양 */
+.graph3d-label {
+  padding: 0.125rem 0.375rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 0.25rem;
+  background: var(--color-surface);
+  color: var(--color-fg-2);
+  font: 500 0.8125rem / 1.25rem var(--font-sans);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.graph3d-label-strong {
+  color: var(--color-fg);
+  font-weight: 650;
+}
+
+/* PDF로 저장 (브라우저 인쇄): 화면이 이미 밝은 종이라 바탕만 흰색으로
+   화면 배치·숨김은 각 컴포넌트의 print: 클래스, 버튼은 components/PrintButton.tsx */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 12mm 14mm;
+  }
+  :root {
+    --color-canvas: #ffffff;
+  }
+  /* 점수 막대·경고 상자 바탕 같은 배경색도 그대로 인쇄 (안 하면 사라지거나 흐려짐) */
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    background: #ffffff;
+  }
+  .graph-panel {
+    break-inside: avoid;
+  }
+  /* 인쇄 폭에 맞게 줄이고 비율은 그대로 (캔버스 크기는 인쇄 중에 다시 계산되지 않음) */
+  .graph-panel canvas {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    max-height: 120mm;
+    margin-inline: auto;
+  }
+  /* 3D 그래프는 캔버스를 감싼 상자가 화면 너비(px)를 그대로 들고 있어서 종이 폭으로 줄임 (안 하면 오른쪽이 잘림) */
+  .graph-panel .scene-container {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .float-tooltip-kap,
+  .graph3d-label {
+    display: none !important;
+  }
+  /* 3D는 인쇄 직전에 뜬 사진으로 (WebGL 캔버스는 마지막으로 화면에 띄운 장면이 인쇄돼서) */
+  .graph-panel:has(.print-snapshot) .scene-container {
+    display: none !important;
+  }
+  .graph-panel .print-snapshot {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 120mm;
+    margin-inline: auto;
+  }
+  /* 접힌 '이유 더 보기'도 펼쳐서 */
+  details::details-content {
+    content-visibility: visible;
+  }
+  details > summary {
+    display: none;
+  }
+  tr {
+    break-inside: avoid;
+  }
+}

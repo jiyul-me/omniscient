@@ -1,0 +1,235 @@
+{
+ "address": "0x098b716b8aaf21512996dc57eb0615e2383e2f96",
+ "capturedAt": "2026-10-17",
+ "note": "GET /api/risk?debug=1 결과의 input (금액은 ETH 환산, 소수 6자리 반올림)",
+ "expected": {
+  "score": 90,
+  "in": 4,
+  "out": 81
+ },
+ "input": {
+  "center": {
+   "category": "sanctioned",
+   "source": "미국 재무부 OFAC 제재 목록 (0xB10C 정리본)",
+   "community": false
+  },
+  "flows": [
+   {
+    "side": "in",
+    "address": "0x1a2a1c938ce3ec39b6d47113c7955baa9dd454f2",
+    "valueEth": 184144.859071,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x665660f65e94454a64b96693a67a41d440155617",
+    "valueEth": 4870.142606,
+    "category": "hacker"
+   },
+   {
+    "side": "in",
+    "address": "0xe708f17240732bbfa1baa8513f66b665fbc7ce10",
+    "valueEth": 3694.537584,
+    "category": "hacker"
+   },
+   {
+    "side": "in",
+    "address": "0xb66cd966670d962c227b3eaba30a872dbfb995db",
+    "valueEth": 100,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xe129927cfc61ce2f0b2a0ca6d8f9482d4ee60c64",
+    "valueEth": 2,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x4976a4a02f38326660d17bf34b431dc6e2eb2327",
+    "valueEth": 1.0569,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x449a426acd1a176d93f2564742c898482cb8f9f7",
+    "valueEth": 0.012543,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0xab9c38ec226d73e2f1d5c128858114aaf05e2edf",
+    "valueEth": 0.01,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x3f43613210c4f79efefcc9bdacf0a8d391714f3f",
+    "valueEth": 0.01,
+    "category": null
+   },
+   {
+    "side": "in",
+    "address": "0x6be687a5143ff5220cc5f4b3c6a43468b5331bc1",
+    "valueEth": 0.01,
+    "category": null
+   },
+   {
+    "side": "out",
+    "address": "0x35fb6f6db4fb05e6a4ce86f2c93691425626d4b1",
+    "valueEth": 33568.152,
+    "category": "sanctioned"
+   },
+   {
+    "side": "out",
+    "address": "0xf7b31119c2682c88d88d455dbb9d5932c65cf1be",
+    "valueEth": 25127.5192,
+    "category": "sanctioned"
+   },
+   {
+    "side": "out",
+    "address": "0x3e37627deaa754090fbfbb8bd226c1ce66d255e9",
+    "valueEth": 23528.8,
+    "category": "sanctioned"
+   },
+   {
+    "side": "out",
+    "address": "0x53b6936513e738f44fb50d2b9476730c0ab3bfc1",
+    "valueEth": 21629.48215,
+    "category": "sanctioned"
+   },
+   {
+    "side": "out",
+    "address": "0xa0e1c89ef1a489c9c7de96311ed5ce5d32c20e4b",
+    "valueEth": 18256.81,
+    "category": "sanctioned"
+   },
+   {
+    "side": "out",
+    "address": "0x08723392ed15743cc38513c4925f5e6be5c17243",
+    "valueEth": 12595.3,
+    "category": "sanctioned"
+   },
+   {
+    "side": "out",
+    "address": "0x3cffd56b47b7b41c56258d9c7731abadc360e073",
+    "valueEth": 10129.935,
+    "category": "sanctioned"
+   },
+   {
+    "side": "out",
+    "address": "0x665660f65e94454a64b96693a67a41d440155617",
+    "valueEth": 5997.096335,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xe708f17240732bbfa1baa8513f66b665fbc7ce10",
+    "valueEth": 4549.762737,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x1bf53ce80ff2ed5711b8a2db8f7ea5b38da118d6",
+    "valueEth": 3302.6,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xdf225c84a0eaeaaac20e6c1d369e94ee13b9df2a",
+    "valueEth": 3275.64547,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x77532dd2eb6e8eaf416f39c65f48cd2369782828",
+    "valueEth": 3202.3294,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xbcd78c2d608e7ceb3d25bea30fae8a9d57033868",
+    "valueEth": 3102.6215,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x1361c1e18930483f4aaf91f3a263937e4fcc1f39",
+    "valueEth": 3002.985,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xb2369d20e7f0c46270b9f79ab26fc62fada356c7",
+    "valueEth": 2941.26,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xbc5639887283eaf1b8e966e0b2fa6998d2ec6404",
+    "valueEth": 2915.24,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x5b0431365ce1ab3693bea6f33ae67653dd30d8bd",
+    "valueEth": 2803.2561,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xfce9d04133701a77589615c23def7ba98289c8e2",
+    "valueEth": 2510.78492,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x429a66e7bd829f9453cee5239bfeaf5657a11a3e",
+    "valueEth": 2018.23529,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xbc25d57412a04956cdd95af07825c5c1f34d29eb",
+    "valueEth": 2001,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x5d84a732b355ada31a36b33c446e3dee28f51555",
+    "valueEth": 1250,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x29fc9b71492ec63696cf9cd56e9832a42b0dced0",
+    "valueEth": 1250,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x9fae13de16d34873246e48b514fc88581751533f",
+    "valueEth": 1250,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xdb3a63562bb7afd44e6b6be8c8269f807c39f5fa",
+    "valueEth": 1250,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0x776b80e3fd97516ae3a2579cf4eae5ff5867d0f3",
+    "valueEth": 1250,
+    "category": "hacker"
+   },
+   {
+    "side": "out",
+    "address": "0xb66cd966670d962c227b3eaba30a872dbfb995db",
+    "valueEth": 2,
+    "category": null
+   }
+  ]
+ }
+}
